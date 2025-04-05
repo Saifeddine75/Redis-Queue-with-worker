@@ -1,0 +1,15 @@
+version: '3.8'
+
+services:
+  redis:
+    image: redis:latest
+    container_name: redis_queue
+    restart: always
+    ports:
+      - "6379:6379"
+    command: redis-server --save 20 1 --loglevel warning --requirepass ${REDIS_PASSWORD}
+    volumes:
+      - redis_data:/data
+
+volumnes:
+  redis_data
